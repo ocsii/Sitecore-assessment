@@ -1,0 +1,15 @@
+C:\Users\chris\Desktop\Internship Files\SiteCore\Assesment\Task2C#\obj\Debug\net9.0\Task2C#.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\chris\Desktop\Internship Files\SiteCore\Assesment\Task2C#\obj\Debug\net9.0\Task2C#.AssemblyInfoInputs.cache
+C:\Users\chris\Desktop\Internship Files\SiteCore\Assesment\Task2C#\obj\Debug\net9.0\Task2C#.AssemblyInfo.cs
+C:\Users\chris\Desktop\Internship Files\SiteCore\Assesment\Task2C#\obj\Debug\net9.0\Task2C#.csproj.CoreCompileInputs.cache
+C:\Users\chris\Desktop\Internship Files\SiteCore\Assesment\Task2C#\obj\Debug\net9.0\Task2C#.sourcelink.json
+C:\Users\chris\Desktop\Internship Files\SiteCore\Assesment\Task2C#\bin\Debug\net9.0\Task2C#.exe
+C:\Users\chris\Desktop\Internship Files\SiteCore\Assesment\Task2C#\bin\Debug\net9.0\Task2C#.deps.json
+C:\Users\chris\Desktop\Internship Files\SiteCore\Assesment\Task2C#\bin\Debug\net9.0\Task2C#.runtimeconfig.json
+C:\Users\chris\Desktop\Internship Files\SiteCore\Assesment\Task2C#\bin\Debug\net9.0\Task2C#.dll
+C:\Users\chris\Desktop\Internship Files\SiteCore\Assesment\Task2C#\bin\Debug\net9.0\Task2C#.pdb
+C:\Users\chris\Desktop\Internship Files\SiteCore\Assesment\Task2C#\obj\Debug\net9.0\Task2C#.dll
+C:\Users\chris\Desktop\Internship Files\SiteCore\Assesment\Task2C#\obj\Debug\net9.0\refint\Task2C#.dll
+C:\Users\chris\Desktop\Internship Files\SiteCore\Assesment\Task2C#\obj\Debug\net9.0\Task2C#.pdb
+C:\Users\chris\Desktop\Internship Files\SiteCore\Assesment\Task2C#\obj\Debug\net9.0\Task2C#.genruntimeconfig.cache
+C:\Users\chris\Desktop\Internship Files\SiteCore\Assesment\Task2C#\obj\Debug\net9.0\ref\Task2C#.dll
