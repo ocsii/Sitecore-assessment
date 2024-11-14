@@ -2,6 +2,9 @@ import java.lang.Math;
 import java.util.ArrayList;
 
 public class Task1 {
+    public static void main(String[] args) {
+
+    }
 }
 
 abstract class GeometricFigures {
@@ -12,15 +15,16 @@ abstract class GeometricFigures {
 
 class Point extends GeometricFigures {
 
-    // Point represented by x and y
+    // Line represented by two coordinates
     private double x, y;
 
+    // Constructor
     public Point(double x, double y) {
         this.x = x;
         this.y = y;
     }
 
-    // Setter - for rotating
+    // Setter
     public void setCoordinates(double newX, double newY) {
         this.x = newX;
         this.y = newY;
@@ -31,23 +35,22 @@ class Point extends GeometricFigures {
         return new double[] { this.x, this.y };
     }
 
-    // Moving is just addition
     @Override
     public void move(double moveX, double moveY) {
         this.x += moveX;
         this.y += moveY;
     }
 
-    // Cannot rotate a point
     @Override
     public void rotate(double angle) {
-    }
+        // Cannot rotate a point
 
+    }
 }
 
 class Line extends GeometricFigures {
 
-    // Line represented by two Points
+    // Line represented by two "Points"
     private Point frontPoint, backPoint;
 
     // Constructor
@@ -84,8 +87,8 @@ class Line extends GeometricFigures {
         double[] backPoints = backPoint.getCoordinates();
 
         // Calculate Midpoint
-        double midX = ((frontPoints[0] + backPoints[0]) / 2);
-        double midY = ((frontPoints[1] + backPoints[1]) / 2);
+        double midX = (frontPoints[0] + backPoints[0]) / 2;
+        double midY = (frontPoints[1] + backPoints[1]) / 2;
 
         // Calculate new Points
         // Formula - https://academo.org/demos/rotation-about-point/
@@ -118,6 +121,7 @@ class Line extends GeometricFigures {
 
 class Circle extends GeometricFigures {
 
+    // Circle made up of "Point" and radius
     private Point centre;
     private double radius;
 
@@ -133,10 +137,12 @@ class Circle extends GeometricFigures {
         this.radius = radius;
     }
 
+    // Getter
     public Point getCentre() {
         return this.centre;
     }
 
+    // Getter
     public double getRadius() {
         return this.radius;
     }
@@ -146,9 +152,10 @@ class Circle extends GeometricFigures {
         this.centre.move(moveX, moveY);
     }
 
-    // Rotating circle makes no difference
     @Override
     public void rotate(double angle) {
+        // Rotating circle makes no difference
+
     }
 }
 
