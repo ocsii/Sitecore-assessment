@@ -7,6 +7,7 @@ public class Task1 {
     }
 }
 
+// For creating aggregation function
 abstract class GeometricFigures {
     public abstract void move(double moveX, double moveY);
 
