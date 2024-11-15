@@ -25,7 +25,6 @@ def mazeData_to_maze (mazeData, m , n):
 
     return maze
 
-
 # Move in direction only if not bomb
 def move_in_direction(x, y, direction, maze):
     dx, dy = direction
@@ -40,7 +39,6 @@ def move_in_direction(x, y, direction, maze):
         return newX, newY   
     
     return None
-
 
 def bfs (start, maze, m , n):
 
@@ -89,11 +87,9 @@ def print_maze_with_path(maze, path):
             row += f"{maze[(x, y)].cellType:<3}"  
         print(row)
     
-
 if __name__ == "__main__":
     # Assuming Totchaka always enters from 0,0 and Ally follows behind him
     start = (0, 0)  
-
 
     # Maze
     mazeData = [
