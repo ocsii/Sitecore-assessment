@@ -15,6 +15,12 @@ public class Task2 {
 
         System.out.println(isPalindrome(inputString2, trashSymbolString2));
 
+        // Example 3
+        String inputString3 = "?taa#aa#?#?#T";
+        String trashSymbolString3 = "#?";
+
+        System.out.println(isPalindrome(inputString3, trashSymbolString3));
+
     }
 
     public static Boolean isPalindrome(String inputString, String garbageString) {
