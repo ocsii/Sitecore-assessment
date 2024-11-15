@@ -1,4 +1,7 @@
 from collections import deque
+ 
+# Top Top-Right Right Bottom-Right Bottom Bottom-Left Left Top-Left
+directions = [(0, 1), (1, 1), (1, 0), (1, -1), (0, -1), (-1, -1), (-1, 0), (-1, 1)]
 
 # For displaying Maze output
 class CellType:
@@ -13,26 +16,18 @@ class Square:
         self.y = y
         self.cellType = cellType
 
-# Maze data - can store in database - or randomly generate
-mazeData = [
-    ((0,0), CellType.SAFE), ((1,0), CellType.SAFE), ((2,0), CellType.BOMB), ((3,0), CellType.BOMB), ((4,0), CellType.SAFE),
-    ((0,1), CellType.BOMB), ((1,1), CellType.BOMB), ((2,1), CellType.SAFE), ((3,1), CellType.BOMB), ((4,1), CellType.SAFE),
-    ((0,2), CellType.SAFE), ((1,2), CellType.BOMB), ((2,2), CellType.BOMB), ((3,2), CellType.SAFE), ((4,2), CellType.BOMB),
-    ((0,3), CellType.BOMB), ((1,3), CellType.SAFE), ((2,3), CellType.BOMB), ((3,3), CellType.SAFE), ((4,3), CellType.BOMB),
-    ((0,4), CellType.SAFE), ((1,4), CellType.BOMB), ((2,4), CellType.SAFE), ((3,4), CellType.BOMB), ((4,4), CellType.BOMB),
-]
+# Convet to maze - dictionary holding square (key - coordinates)
+def mazeData_to_maze (mazeData, m , n):
+    maze = {}
+    for y in range(m):
+        for x in range(n):
+            maze[(x, y)] = Square(x, y, mazeData[y][x])
 
-# Convert to dictionary
-maze = {}
-for (coord, cellType) in mazeData:
-    x, y = coord
-    maze[(x, y)] = Square(x, y, cellType)
+    return maze
 
-# Top Top-Right Right Bottom-Right Bottom Bottom-Left Left Top-Left
-directions = [(0, 1), (1, 1), (1, 0), (1, -1), (0, -1), (-1, -1), (-1, 0), (-1, 1)]
 
 # Move in direction only if not bomb
-def move_in_direction(x, y, direction):
+def move_in_direction(x, y, direction, maze):
     dx, dy = direction
     newX, newY = x + dx, y + dy
 
@@ -46,21 +41,8 @@ def move_in_direction(x, y, direction):
     
     return None
 
-def get_maze_length(maze):
-    length = max(y for x, y in maze.keys()) + 1
 
-    return length
-
-def get_maze_width(maze):
-    width = max(x for x, y in maze.keys()) + 1
-
-    return width
-
-
-def bfs (start, maze):
-
-    # Length for goal test
-    mazeLength = get_maze_length(maze)
+def bfs (start, maze, m , n):
 
     # Position, Path
     queue = deque([(start, [start])])
@@ -78,13 +60,13 @@ def bfs (start, maze):
         # Add to visited
         visited.add((x,y))
 
-        # Check if reached last col, (any x, mazeLength) 
-        if y == mazeLength - 1:
+        # Check if reached last col, (any x, n) 
+        if y == n - 1:
             return path
         
         # Get neighbours that not bomb & not previous Square
         for direction in directions:
-            neighbour = move_in_direction(x, y, direction)
+            neighbour = move_in_direction(x, y, direction, maze)
 
             if neighbour and neighbour not in visited:
                 new_path = path + [neighbour]
@@ -100,14 +82,10 @@ def print_maze_with_path(maze, path):
         if maze[(x, y)].cellType != CellType.BOMB:
             maze[(x, y)].cellType = CellType.PATH  
 
-    # Get width and height for loop
-    length = get_maze_length(maze)
-    width = get_maze_width(maze)
-
     # Print the maze
-    for y in range(length):
+    for y in range(m):
         row = ""
-        for x in range(width):
+        for x in range(n):
             row += f"{maze[(x, y)].cellType:<3}"  
         print(row)
     
@@ -115,9 +93,25 @@ def print_maze_with_path(maze, path):
 if __name__ == "__main__":
     # Assuming Totchaka always enters from 0,0 and Ally follows behind him
     start = (0, 0)  
+
+
+    # Maze
+    mazeData = [
+        [CellType.SAFE, CellType.SAFE, CellType.BOMB, CellType.BOMB, CellType.SAFE],
+        [CellType.BOMB, CellType.BOMB, CellType.SAFE, CellType.BOMB, CellType.SAFE],
+        [CellType.SAFE, CellType.BOMB, CellType.BOMB, CellType.SAFE, CellType.BOMB],
+        [CellType.BOMB, CellType.SAFE, CellType.BOMB, CellType.SAFE, CellType.BOMB],
+        [CellType.SAFE, CellType.BOMB, CellType.SAFE, CellType.BOMB, CellType.BOMB]
+    ]
+
+    # Specify size
+    m, n = 5, 5
+
+    # Convert mazeData to maze
+    maze = mazeData_to_maze(mazeData, m , n)
     
     # Find Path
-    path = bfs(start, maze)
+    path = bfs(start, maze, m, n)
 
     # Output
     if path:
